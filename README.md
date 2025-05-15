@@ -42,6 +42,8 @@ Adding support in the original Uptime Kuma will be a great improvement, but unti
    http://localhost:8080/kuma
    ```
 
+![Uptime Kuma with subfolder path](./screenshot.png)
+
 ## How It Works
 
 ### Docker Compose Configuration

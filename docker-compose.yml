@@ -1,0 +1,25 @@
+name: kuma
+
+volumes:
+  kuma:
+
+services:
+
+  nginx:
+    image: nginx:1.27.5
+    volumes:
+      - ${PWD}/kuma-nginx.conf:/etc/nginx/conf.d/kuma-nginx.conf
+    ports:
+      - 8080:8080
+
+  kuma:
+    image: louislam/uptime-kuma:1.23.16
+    entrypoint: /entrypoint.sh
+    command: ["node", "/app/server/server.js"]
+    environment:
+      SERVER_CONTEXTPATH: "/kuma"
+    volumes:
+      - ${PWD}/entrypoint.sh:/entrypoint.sh
+      - kuma:/app/data
+    ports:
+      - 3001
